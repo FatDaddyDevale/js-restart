@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Restart</title>
+</head>
+<body>
+
+    <h1>Welcome to My Interactive Page!</h1>
+    <p>Watch the console for some JavaScript magic.</p>
+
+    <script>
+        // All our JavaScript code will go here!
+
+        // 1. Variables and Data Types
+        let userName = "FatDaddyDev";
+        let userAge = 30;
+        let hasPaidSubscription = true;
+        let favoriteFruits = ["Apple","Banana","Watermelon"];
+        let userProfile = {
+            city: "NYC",
+            country: "USA",
+            occupation: "President"
+        };
+
+        console.log("Variables and Data Types...");
+        console.log("User Name:", userName);
+        console.log("User Age:", userAge);
+        console.log("Has Paid Subscription:", hasPaidSubscription);
+        console.log("First Favorite Fruit:", favoriteFruits[0]);
+        console.log("User Profile:", userProfile);
+        console.log("User's Job':", userProfile.occupation);
+
+        // 2. Basic Operators
+        let priceOfItem1 = 15;
+        let priceOfItem2 = 7;
+        let totalPrice = priceOfItem1 + priceOfItem2;
+        let discount = 0.10;
+        let finalPrice = totalPrice - (totalPrice * discount);
+
+        console.log("Basic Operators...");
+        console.log("Total Price:", totalPrice);
+        console.log("Final Price after Discount:", finalPrice);
+
+        let isLoggedIn = true;
+        let isAdmin = false;
+        console.log("Can access admin panel (is user an Admin and logged in?):", isLoggedIn && isAdmin);
+        console.log("Does the user have Paid Subscription and is logged in?:", hasPaidSubscription && isLoggedIn);
+
+        // 3. Conditional Statements
+        let temperature = 25;
+
+        if (temperature > 25) {
+            console.log("It's a hot day!");
+        } else if (temperature < 15) {
+            console.log("It's a cold day!");
+        } else {
+            console.log("It's a pleasant day!");
+        }
+        
+        // 4. For Loop
+        let fruits = ["Apple", "Banana", "Cherry"];
+        console.log("Fruits in the list:", fruits.length);
+
+        for (let i = 0; i < fruits.length; i++) {
+            console.log(`Fruit ${i+1} is:`, fruits[i]);
+        }
+        
+        // 5. While Loop
+        let count = 0;
+        
+        while (count <= 3) {
+            console.log("Count is:", count);
+            count++;
+        }
+
+        // 6. Do While Loop
+        let doughElasticity = 0;
+        let targetElasticity = 7;
+        let kneadCount = 0; //this increases the dough's elasticity randomly with each knead
+
+        console.log("Kneading dough 2 times to get 1 doughElasticity...");
+        console.log(`Target Elasticity: ${targetElasticity}`);        
+        do {
+        kneadCount++;
+            console.log(`Kneading dough... (Attempt: ${kneadCount})`);
+
+            // Randomly increase elasticity by 0-2 each knead and rounding down to the nearest integer
+            doughElasticity += Math.round(Math.random() * 3); 
+            console.log(`Dough elasticity is now: ${doughElasticity}`);
+
+            if (doughElasticity < targetElasticity) {
+                console.log("Dough is not ready yet, kneading more...");
+            }
+
+        }
+        while (doughElasticity < targetElasticity && kneadCount < 10); 
+
+        if (doughElasticity >= targetElasticity) {
+            console.log("Dough is ready for pizza!");
+        } else {
+            console.log("Dough needs more kneading.");
+        }
+
+        // 7. Functions
+        
+        // Classic Function to calculate the sum of two numbers
+        /*function sum(no1, no2) {
+            let result = no1 + no2;
+            console.log(`The sum of ${no1} and ${no2} is: ${result}`);
+            return result;
+        }
+        let addition = sum(20, 30);
+        console.log(`Addition Result: ${addition}`); */
+
+        // Using an arrow function for the sum
+        /*const sum = (no1, no2) => no1 + no2; // Arrow function
+
+        let userNumber1 = parseInt(prompt("Enter first number:"));
+        let userNumber2 = parseInt(prompt("Enter second number:"));
+
+        let addition = sum(userNumber1, userNumber2);
+        console.log(`The sum of ${userNumber1} and ${userNumber2} is ${addition}.`); */
+
+        // quiz 
+        let randomNumber = Math.random() * 10;
+        randomNumber = Math.floor(randomNumber) + 1;
+        console.log("Random Number:", randomNumber);
+        
+        // 8. Arrays
+
+        let pizzaToppings = ["Bacon", "Mushrooms", "Olives", "Pepperoni", "Pineapple", "Spinach", "Tomatoes", "jalepenos", "Onions", "Bell Peppers", "Paprika", "Garlic"];
+        console.log("Pizza Toppings:", pizzaToppings);
+        pizzaToppings.push("Extra Cheese");
+        console.log("Pizza Toppings:", pizzaToppings);
+        console.log(`Total number of Pizza Toppings: ${pizzaToppings.length}`);
+        console.log(`First Pizza Topping is: ${pizzaToppings[0]}`); 
+
+        let removedPizzaToppings = pizzaToppings.pop();
+        console.log("Removed Pizza Topping:", removedPizzaToppings);
+        console.log("Current Pizza Toppings:", pizzaToppings);
+        console.log(`Last Pizza Topping is: ${pizzaToppings[pizzaToppings.length-1]}`); //NOTE - instead of index we can mention length - 1 to get the last element
+        console.log(`Total number of Pizza Toppings: ${pizzaToppings.length}`);
+
+        for (let i = 0; i < pizzaToppings.length; i++) {
+            console.log(`Topping Option ${i+1}: ${pizzaToppings[i]}`);
+        }
+
+        pizzaToppings.forEach(function(topping, i) {
+            console.log(`Topping Option ${i+1}: ${topping}`);
+        });
+        
+        console.log(`Index of Olives: ${pizzaToppings.indexOf("Olives")}`);
+
+        // Slice and Splice
+
+        let slicedToppings = pizzaToppings.slice(1, 4); // Slicing from index 1 to 3 (4 is not included)
+        console.log("Sliced Toppings (from index 1 to 3):", slicedToppings);
+
+        let splicedToppings = pizzaToppings.splice(1, 4); // Splicing from index 1, removing 4 items
+        console.log("Spliced Toppings (removed 4 items from index 1):", splicedToppings);
+        console.log("Current Pizza Toppings after Splice:", pizzaToppings);
+
+        // 9. Objects
+        let myPizza = {
+            "size options": ["small", "medium", "Large"],
+            crust: "Thin",
+            toppings: ["Bacon", "Mushrooms", "Olives"],
+            isExtraCheese: true,
+            price: 15.99
+        };
+        console.log("My Pizza Object:", myPizza);
+        console.log("My Pizza size is:", myPizza["size options"][2]); // Accessing size using bracket notation
+        console.log("My Pizza crust is:", myPizza.crust);
+        console.log("My Pizza Toppings are:", myPizza.toppings.join(", "));
+        console.log("Is Extra Cheese:", myPizza.isExtraCheese);
+        console.log("My Pizza Price is:", myPizza.price);
+
+        myPizza["size options"] = ["7in", "10in", "12in"];
+        console.log("Updated My Pizza size options:", myPizza["size options"]);
+
+        myPizza.price = 18.99;
+        console.log("Updated My Pizza Price is:", myPizza.price);
+
+        myPizza.name = "FatDaddyDev's Special In-House Pizza";
+        myPizza.menuDescription = function() {
+            return(`A ${this.crust} crust pizza with ${this.toppings.length} toppings- ${this.toppings.join(", ")}.`);
+        };
+        myPizza.calTax = function() {
+            let taxRate = 0.15; 
+            let taxAmount = this.price * taxRate;
+            let totalPrice = this.price + taxAmount;
+            console.log(`Total Price: $${totalPrice.toFixed(2)} (incl tax)`);
+        };
+        myPizza.addToppings = function(newTopping) {
+            this.toppings.push(newTopping);
+            console.log(`Added ${newTopping} to the pizza. Current toppings: ${this.toppings.join(", ")}.`);
+        }
+
+        console.log(`${myPizza.name}: ${myPizza.menuDescription()}`);
+        myPizza.calTax();
+        myPizza.addToppings(prompt("Enter a new topping to add:"));
+
+        console.log("My Updated Pizza Object is:", myPizza);
+
+    </script>
+
+</body>
+</html>
